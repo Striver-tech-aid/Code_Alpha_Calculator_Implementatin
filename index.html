@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator_Implementation</title>
+    
+    
+    <style>
+      
+        body
+        {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(161deg, rgb(34, 181, 254) 22.81%, rgb(255, 186, 214) 63.42%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;background: linear-gradient(217deg, rgb(221, 221, 221) 41.78%, rgb(110, 136, 161) 100.00%);
+            align-items: center;
+            margin: 0;
+            overflow: hidden; 
+        }
+
+        
+        header
+        
+        {
+            background: linear-gradient(333deg, rgb(59, 55, 106) 20.54%, rgb(0, 143, 186) 35.36%, rgb(255, 149, 213) 61.15%);
+            color: black;
+            padding: 20px;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            font-weight : bold;
+        }
+
+        header h1
+        {
+            margin: 0;
+            font-size: 2rem;
+            transition: font-size 0.3s ease;
+        }
+
+        
+        footer
+        {
+            background: linear-gradient(213deg, rgb(44, 222, 242) 24.59%, rgb(156, 43, 171) 63.72%, rgb(39, 43, 44) 92.18%);
+            color: white;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            font-size: 0.9rem;
+            transition: font-size 0.3s ease;
+        }
+
+        footer a
+        {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover
+        {
+            text-decoration: underline;
+        }
+
+        .calculator
+        {
+            background-color: #A9C9FF;
+            background-image: linear-gradient(180deg, #A9C9FF 0%, #FFBBEC 100%);
+
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            max-width: 350px;
+            margin-top: 80px;
+            margin-bottom: 80px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .calculator:hover
+        {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+        }
+
+        #display
+        {
+            width: 94%;
+            height: 50px;
+            text-align: right;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            background: linear-gradient(132deg, rgb(249, 206, 183) 0.00%, rgb(173, 209, 242) 100.00%);
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons
+        {
+            background: linear-gradient(217deg, rgb(221, 221, 221) 41.78%, rgb(110, 136, 161) 100.00%);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        button
+        {
+            padding: 20px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #FFDEE9;
+            background-image: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover
+        {
+            background-color: #ddd;
+            transform: translateY(-2px);
+        }
+
+        button:active
+        {
+            background-color: #ccc;
+            transform: translateY(1px);
+        }
+
+        button.equal
+        {
+            background-color: #00b4db;
+            color: white;
+        }
+
+        button.equal:hover
+        {
+            background-color: #0083b0;
+        }
+
+
+        @media (max-width: 600px)
+        {
+            header h1
+            {
+                font-size: 1.5rem; 
+            }
+
+            footer
+            {
+                font-size: 0.8rem; 
+
+            .calculator
+            {
+                width: 90%;
+            }
+
+            button
+            {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            #display
+            {
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+        @media (min-width: 600px) and (max-width: 1024px) {
+            header h1
+            {
+                font-size: 1.75rem; 
+            }
+
+            footer
+            {
+                font-size: 0.85rem; 
+            }
+
+            .calculator
+            {
+                width: 80%;
+            }
+
+            button
+            {
+                padding: 18px;
+                font-size: 1.1rem;
+            }
+
+            #display
+            {
+                height: 45px;
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (min-width: 1025px)
+        {
+            header h1 {
+                font-size: 2rem; 
+            }
+
+            footer
+            {
+                font-size: 0.9rem;
+            }
+
+            .calculator
+            {
+                width: 400px;
+            }
+
+            button
+            {
+                padding: 25px;
+                font-size: 1.3rem;
+            }
+
+            #display
+            {
+                height: 60px;
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CALCULATE ME!</h1>
+    </header>
+
+    <div class="calculato">
+        <input type="text" id="display" disabled />
+        <div class="buttons">
+            <button onclick="clearDisplay()">C</button>
+            <button onclick="deleteLast()">DEL</button>
+            <button onclick="appendToDisplay('%')">%</button>
+            <button onclick="appendToDisplay('/')">/</button>
+            
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('*')">*</button>
+            
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')">-</button>
+            
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('+')">+</button>
+            
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculateResult()" class="equal">=</button>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Sumit Maurya | <a href="mailto:mauryasumit620@gmail.com">Email: mauryasumit620@gmail.com</a>
+    </footer>
+
+    
+    <script>
+        function appendToDisplay(value)
+        {
+            document.getElementById('display').value += value;
+        }
+
+        function clearDisplay()
+        {
+            document.getElementById('display').value = '';
+        }
+
+        function deleteLast()
+        {
+            let current = document.getElementById('display').value;
+            document.getElementById('display').value = current.slice(0, -1);
+        }
+
+        function calculateResult()
+        {
+            let expression = document.getElementById('display').value;
+            try
+            {
+                let result = eval(expression);  
+                document.getElementById('display').value = result;
+            } catch (error)
+            {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
